@@ -1,14 +1,16 @@
 # Fichier a modifier après installation 
 Ce repo est une boué de sauvetage pour mon rasp.
 Script pour installer :
-```curl -o- https://raw.githubusercontent.com/nesmon/pi_config/master/install.sh | bash```
+```
+curl -o- https://raw.githubusercontent.com/nesmon/pi_config/master/install.sh | bash
+```
 
 ## Update :
 Faite un coup de `sudo raspi-config` pour modifier certain point du raspberry (expend filesystem, password ...)
 
 ## Changer le nom de son rasp (a executer en sudo) :
 Editer le fichier `/etc/hosts` et remplacer raspberrypi par le nom que vous voulais a la dernier ligne
-Puis éditer le fichier `/etc/hostname\` et remplacer raspberrypi par le meme nom donnez précédement  
+Puis éditer le fichier `/etc/hostname` et remplacer raspberrypi par le meme nom donnez précédement
 
 ## Config fish
 Installer le theme cbjohnson avefc la commande suivante :
