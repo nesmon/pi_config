@@ -12,6 +12,28 @@ Faite un coup de `sudo raspi-config` pour modifier certain point du raspberry (e
 Editer le fichier `/etc/hosts` et remplacer raspberrypi par le nom que vous voulais a la dernier ligne
 Puis éditer le fichier `/etc/hostname` et remplacer raspberrypi par le meme nom donnez précédement
 
+## Installer php 7.1
+PHP7.1 n'est pas dispo dans le depot stretch de raspbian, il faut donc utiliser le repo buster de raspbian :
+```
+echo “deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi” > /etc/apt/sources.list.d/php.list
+apt-get update
+```
+Attention ne pas faire de `sudo apt-get dist-upgrade` pour eviter de casser son OS(reinstalation obligatoire dans se cas).
+
+Ensuite installer php en fesant :
+```
+sudo apt-get install php7.1 php7.1-fpm nginx mysql-client mysql-server php7.1-mysql php7.1-dev php-xdebug  
+```
+
+Pour terminer relancer PHP et nginx pour que tout fonctionne sans probleme :
+```
+sudo service nginx restart
+sudo service php7.1-fpm restart
+```
+
+Lance ton navigateur et tappe dans la bar d'url :
+localhost:80
+
 ## Config fish
 Installer le theme cbjohnson avefc la commande suivante :
 ```omf install cbjohnson```
