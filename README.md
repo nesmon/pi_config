@@ -1,7 +1,7 @@
 # Fichier a modifier après installation 
 Ce repo est une boué de sauvetage pour mon rasp.
 Script pour installer :
-curl -o- https://raw.githubusercontent.com/nesmon/pi_config/master/install.sh | bash
+```curl -o- https://raw.githubusercontent.com/nesmon/pi_config/master/install.sh | bash```
 
 ## Update :
 Faite un coup de `sudo raspi-config` pour modifier certain point du raspberry (expend filesystem, password ...)
