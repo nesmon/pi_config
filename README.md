@@ -76,7 +76,7 @@ Puis chercher :
 ```
 Verifier si read only = no
 
-Pour pour finir allez tout en bas du fichier est ajouter ceci : 
+Pour finir allez tout en bas du fichier est ajouter ceci : 
 ```
 [public]
   comment= Public Storage
