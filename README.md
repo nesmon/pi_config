@@ -1,4 +1,4 @@
-# Fichier a modifier après installation 
+# Pi Config
 Ce repo est une boué de sauvetage pour mon rasp.
 
 Script pour installer :
@@ -6,14 +6,14 @@ Script pour installer :
 curl -o- https://raw.githubusercontent.com/nesmon/pi_config/master/install.sh | bash
 ```
 
-## Update :
+## 1. Update :
 Faite un coup de `sudo raspi-config` pour modifier certain point du raspberry (expend filesystem, password ...)
 
-## Changer le nom de son rasp (a executer en sudo) :
+## 2. Changer le nom de son rasp (a executer en sudo) :
 Editer le fichier `/etc/hosts` et remplacer raspberrypi par le nom que vous voulais a la dernier ligne
 Puis éditer le fichier `/etc/hostname` et remplacer raspberrypi par le meme nom donnez précédement
 
-## Installer php 7.1
+## 3. Installer php 7.1
 PHP7.1 n'est pas dispo dans le depot stretch de raspbian, il faut donc utiliser le repo buster de raspbian (ce dépot s'install via le setup.sh du repo):
 ```
 sudo echo “deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi” > /etc/apt/sources.list.d/php.list
@@ -35,21 +35,32 @@ sudo service php7.1-fpm restart
 Lance ton navigateur et tappe dans la bar d'url :
 localhost:80
 
-## Config fish
+## 4. Config fish
 Installer le theme cbjohnson avefc la commande suivante :
 ```omf install cbjohnson```
 Dans fish
 
-### Utiliser nvm avec fish
+### 4.1 Utiliser nvm avec fish
 De base nvm n'est pas utilisable avec fish il faut installer un package pour l'utiliser avec celui-ci :
 ```omf install nvm```
 Evidément nvm doit etre préalablement installer.
 
-## Pour la seedbox : 
-sudo nano /etc/transmission-daemon/settings.json
+## 5. Pour la seedbox : 
+Tout d'abord desactiver transmision comme ceci :
+```
+sudo /etc/init.d/transmission-daemon stop
+```
 
-## Pour samba :
-### Config de samba :
+Editer les ligne suivante dans le fichier `/etc/transmission-daemon/settings.json` :
+- "download-dir"
+- rpc-authentication-required : a mettre sur true ou false (permet de se conecter a la seedbox via des code)
+- "rpc-username": "transmission",
+- "rpc-password": "{356c072a1bc5d97132bbe6ccd26854798b801dcf8kL7gaRF",
+
+Ouis faire `sudo /etc/init.d/transmission-daemon start` pour redemarer la seedbox.
+
+## 6. Pour samba :
+### 6.1 Config de samba :
 sudo nano /etc/samba/smb.conf
 Chercher :
 ```
@@ -81,7 +92,7 @@ Puis restart samba avec :
 ```
 sudo /etc/init.d/samba restart
 ```
-### Config des user :
+### 6.2 Config des user :
 Faire : 
 ```
 sudo smbpasswd -a pi
@@ -89,7 +100,7 @@ sudo smbpasswd -a pi
 pour choisir un password a l'utilisateur pi sur samba.
 
 
-### Ajout d'un disk externe :
+### 6.3 Ajout d'un disk externe :
 Faire `dmseg` ou `lsblk` pour connaitre le nom de son périphérique (sda, sdb ...)
 Ici on prendra sda1 comme exemple.
 
@@ -111,14 +122,14 @@ Puis on le mount dans se dossier :
 sudo mount /dev/sda1 /home/shares/public/disk1
 ```
 
-### Monter le périphérique au démarage :
+### 6.4 Monter le périphérique au démarage :
 Si le rasp reboot il est préférable de monter automatiquement le disk pour eviter de le faire a chaque démarage, pour cela faite `sudo nano /etc/fstab`, puis ajouter a la fin du fichier cette ligne : 
 ```
 /dev/sda1 /home/shares/public/disk1 auto noatime,nofail 0 0
 ```
 Elle vas permetre de mount le disk automatiquement et d'evirter de faier des erreur si le disk n'est pas brancher au démarage.
 
-## Pi-Hole config :
+## 7. Pi-Hole config :
 Allez dans Setting > Block Lists et ajouter les liens suivant : 
 ```
 https://raw.githubusercontent.com/0XE4/Pi-Holed/master/windows_spy_hosts
