@@ -146,7 +146,7 @@ https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
 https://hosts-file.net/ad_servers.txt
 ```
 
-
+Redémarer le RPi pour que tout soit pris en compte.
 
 
 
