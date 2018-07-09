@@ -7,6 +7,14 @@ sudo apt-get install git curl wget make automake autoconf fish
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 curl -L https://get.oh-my.fish | fish
 
+echo "Install Web Server with Nginx : "
+sudo echo “deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi” > /etc/apt/sources.list.d/php.list
+sudo apt-get update
+sudo apt-get install php7.1 php7.1-fpm nginx mysql-client mysql-server php7.1-mysql php7.1-dev php-xdebug  
+sudo service nginx restart
+sudo service php7.1-fpm restart
+
+
 echo "Install nas with samba : "
 sudo mkdir /home/shares
 sudo mkdir /home/shares/public

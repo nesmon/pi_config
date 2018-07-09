@@ -13,14 +13,14 @@ Editer le fichier `/etc/hosts` et remplacer raspberrypi par le nom que vous voul
 Puis éditer le fichier `/etc/hostname` et remplacer raspberrypi par le meme nom donnez précédement
 
 ## Installer php 7.1
-PHP7.1 n'est pas dispo dans le depot stretch de raspbian, il faut donc utiliser le repo buster de raspbian :
+PHP7.1 n'est pas dispo dans le depot stretch de raspbian, il faut donc utiliser le repo buster de raspbian (ce dépot s'install via le setup.sh du repo):
 ```
-echo “deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi” > /etc/apt/sources.list.d/php.list
-apt-get update
+sudo echo “deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi” > /etc/apt/sources.list.d/php.list
+sudo apt-get update
 ```
 Attention ne pas faire de `sudo apt-get dist-upgrade` pour eviter de casser son OS(reinstalation obligatoire dans se cas).
 
-Ensuite installer php en fesant :
+Ensuite installer php + nginx + mysql (avec les packages utile pour php) en fesant :
 ```
 sudo apt-get install php7.1 php7.1-fpm nginx mysql-client mysql-server php7.1-mysql php7.1-dev php-xdebug  
 ```
