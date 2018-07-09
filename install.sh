@@ -14,7 +14,6 @@ sudo apt-get install php7.1 php7.1-fpm nginx mysql-client mysql-server php7.1-my
 sudo service nginx restart
 sudo service php7.1-fpm restart
 
-
 echo "Install nas with samba : "
 sudo mkdir /home/shares
 sudo mkdir /home/shares/public
