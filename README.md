@@ -1,5 +1,6 @@
 # Fichier a modifier après installation 
 Ce repo est une boué de sauvetage pour mon rasp.
+
 Script pour installer :
 ```
 curl -o- https://raw.githubusercontent.com/nesmon/pi_config/master/install.sh | bash
