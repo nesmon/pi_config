@@ -7,6 +7,18 @@ sudo apt-get install git curl wget make automake autoconf fish
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 curl -L https://get.oh-my.fish | fish
 
+echo "Install vnc server : "
+sudo apt-get install x11vnc
+mkdir /home/$USER/.config/autostart
+echo "
+[Desktop Entry]
+Type=Application
+Exec=x11vnc --forever
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enable=true
+" >> /home/$USER/.config/autostart/vnc.desktop
+
 echo "Install Web Server with Nginx : "
 sudo echo “deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi” > /etc/apt/sources.list.d/php.list
 sudo apt-get update

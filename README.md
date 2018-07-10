@@ -148,6 +148,41 @@ https://hosts-file.net/ad_servers.txt
 
 Redémarer le RPi pour que tout soit pris en compte.
 
+## 8. Ajout du server VNC
+De base le server vnc de raspbian doit être activer, mais moi de on coter il ne veux pas trop fonctionner.
+Donc pour régler le probléme je lance un autre server vnc mais cette fois-ci avec x11vnc.
+
+Pour commencer on vas installer x11vnc :
+```
+sudo apt-get install x11vnc
+```
+Pour terminer on doit juste crée le dossier `autostart` dans le `.config` (si il n'est pas dèja crée) :
+```
+mkdir /home/pi/.config/autostart
+```
+Puis on crée un fichier vnc.desktop qui se lancera automatiquement :
+```
+nano /home/pi/.config/autostart/vnc.desktop
+```
+
+Puis coller ceci :
+```
+[Desktop Entry]
+Type=Application
+Exec=x11vnc --forever
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enable=true
+```
+
+Redémarer votre RPi pour que le server soit opérationnel.
+
+
+
+
+
+ 
+
 
 
 

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=x11vnc --forever
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enable=true
