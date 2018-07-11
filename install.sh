@@ -3,12 +3,12 @@ sudo apt update
 sudo apt upgrade
 
 echo "Install necesary pachage : "
-sudo apt-get install git curl wget make automake autoconf fish
+sudo apt-get install git curl wget make automake autoconf fish -y
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 curl -L https://get.oh-my.fish | fish
 
 echo "Install vnc server : "
-sudo apt-get install x11vnc
+sudo apt-get install x11vnc -y
 mkdir /home/$USER/.config/autostart
 echo "
 [Desktop Entry]
@@ -21,8 +21,8 @@ X-GNOME-Autostart-enable=true
 
 echo "Install Web Server with Nginx : "
 sudo echo “deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi” > /etc/apt/sources.list.d/php.list
-sudo apt-get update
-sudo apt-get install php7.1 php7.1-fpm nginx mysql-client mysql-server php7.1-mysql php7.1-dev php-xdebug  
+sudo apt-get update -y
+sudo apt-get install php7.1 php7.1-fpm nginx mysql-client mysql-server php7.1-mysql php7.1-dev php-xdebug -y
 sudo service nginx restart
 sudo service php7.1-fpm restart
 
@@ -31,10 +31,10 @@ sudo mkdir /home/shares
 sudo mkdir /home/shares/public
 sudo chown -R root:users /home/shares/public
 sudo chmod -R ug=rwx,o=rx /home/shares/public
-sudo apt install samba samba-common-bin
+sudo apt install samba samba-common-bin -y
 
 echo "Install seedbox : "
-sudo apt install transmission-daemon
+sudo apt install transmission-daemon -y
 
 echo "Install pi-hole : "
 curl -sSL https://install.pi-hole.net | bash
